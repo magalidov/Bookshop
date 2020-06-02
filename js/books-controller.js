@@ -1,11 +1,13 @@
 'use strict'
 
 var gCurrModal = null
+var gOnUpdate = false
 
 function onInit() {
-    localStorage.clear(); // For Easy Coding Only
+    // localStorage.clear(); // For Easy Coding Only
     createBooks(7);
     renderBooks();
+    setLang();
     doTrans();
 }
 
@@ -60,6 +62,8 @@ function onReadClick(bookId) {
 }
 //U
 function onUpdatClick(bookId) {
+    if (gOnUpdate===true) return
+    gOnUpdate= true
     var book = getBook(bookId);
     var titleTd = document.querySelector(`[data-title="${bookId}"]`);
     var priceTd = document.querySelector(`[data-price="${bookId}"]`);
@@ -72,11 +76,14 @@ function onUpdatClick(bookId) {
     doTrans();
 }
 function onSaveUpdateClick(bookId) {
+    gOnUpdate= false
     var newName = document.querySelector('.title-update');
     var newPrice = document.querySelector('.price-update');
-    updateBook(bookId, newName.value, newPrice.value);
+    if (newName !== '' && newPrice >0){
+        updateBook(bookId, newName.value, newPrice.value);
+        onCloseModal();
+    }
     renderBooks();
-    onCloseModal();
     doTrans();
 
 }
@@ -98,9 +105,9 @@ function renderBooks() {
     var strHtml = books.map(book => {
         return `
         <tr>
-        <td>${book.id}</td>
-        <td data-title="${book.id}">${book.name[gCurrLang]}</td>
-        <td data-price="${book.id}">${book.price}</td>
+        <td class="td-id">${book.id}</td>
+        <td class="td-title" data-title="${book.id}">${book.name[gCurrLang]}</td>
+        <td class="td-price" data-price="${book.id}">${formatCurrency(book.price)}</td>
         <td><button data-trans="btn-read" class="read" onclick="onReadClick('${book.id}'); onShowModal()">Read</button>
         <button data-trans="btn-update" class="update" onclick="onUpdatClick('${book.id}')" data-bookid="${book.id})">Update</button>
         <button data-trans="btn-delete" class="delete" onclick="onRemoveClick('${book.id}')">Delete</button>

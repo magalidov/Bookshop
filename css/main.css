@@ -1,21 +1,130 @@
 .rtl{
     direction: rtl;
 }
+*{
+    box-sizing: border-box;
+}
+body{
+    margin:0;
+    background-color: rgb(230, 50, 86);
+}
+header{
+    margin-top: 0px;
+    background-color: rgb(77, 77, 214);
+    padding: 10px;
+}
+header h1{
+    margin: 0;
+    color: rgb(245, 234, 210);
+    font-size: 55px;
+}
+main-container{
+}
+.tools{
+    background-color: rgb(235, 195, 20);
+    padding: 10px;
+    font-weight: bold;
+}
+button{
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: rgb(75, 73, 73);
+}
+select{
+    background-color: beige;
+}
+.set-lang{
+    margin-bottom:10px ;
+}
+.add-book{
+    background-color: rgb(241, 200, 94);
+    border-color: rgb(247, 238, 197);
+}
+.add-inputs{
+    margin-top: 10px;
+}
+.add-input-title{
+    width: 150px;
+}
+.add-input-price{
+    width: 55px;
+}
 
+.content{
+    display: inline-block;
+    text-align: center;
+}
+.table-container{
+}
 .books-list{
     border-collapse: collapse;
-    border: black solid 1px;
+    text-align: center;
+    font-weight: bold;
+    overflow: hidden;
+    background-color: rgb(228, 228, 228);
 }
 .books-list td{
-    border: black solid 1px;
+    border: black solid 2px;
+    padding:5px;
+}
+.td-id{
+}
+.td-title{
+width: 162px;
+}
+.td-price{
+    width: 70px;
+}
+
+.read{
+    background-color: rgb(148, 220, 248);
+    border-color: rgb(181, 234, 255);
+}
+.update{
+    background-color: rgb(145, 224, 71);
+    border-color: rgb(172, 253, 148);
+    width: 60px;
+}
+.delete{
+    background-color: rgb(243, 111, 78);
+    border-color:rgb(255, 158, 134);
+}
+.title-update{
+    width: 150px;
+    height: 20px;
+    text-align: center;
+    border: 0px;
+}
+.price-update{
+    width: 55px;
+    height: 20px;
+    border: 0px;
+}
+.curr-page{
+    font-weight: bold;
+    font-size: 17px;
+}
+.page-btns{
+    margin: 10px 10px;
+}
+.page-btns button{
+    border:black solid 1.5px; 
 }
 
 .book-modal{
     margin-top: 5px;
-    border:black solid 1px; ;
-    text-align: center;
+    border:black solid 1.5px; 
+    background-color: rgb(228, 228, 228);
+    margin: auto;
     padding: 5px;
     width: 250px;
+}
+.close-modal{
+    border:black solid 1.5px; 
+}
+.close-modal:hover{
+    background-color: rgb(209, 209, 209);
 }
 .rating-slider{
     -webkit-appearance: none;
@@ -28,7 +137,7 @@
     appearance: none;
     width: 15px;
     height: 15px;
-    background: rgb(240, 185, 33);
+    background: rgb(240, 157, 33);
     cursor: pointer;
 }
 
@@ -37,7 +146,13 @@
 }
 .book-modal img{
     height: 150px;
+    border:black solid 1.5px; 
+
 }
 .book-modal p{
     margin: 5px;
+}
+
+.footer-txt{
+    font-size: 15px;
 }

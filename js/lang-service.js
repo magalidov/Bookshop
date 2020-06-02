@@ -2,12 +2,16 @@ var gCurrLang = 'en'
 
 var gTrans = {
     'caption': {
-        en: 'Bookshop with no Style',
-        he: 'חנות ספרים בלי הסטייל',
+        en: 'The old Bookshop',
+        he: 'חנות הספרים הישנה',
     },
     'sort-lable': {
         en: 'Sort',
         he: 'מיון',
+    },
+    'lang-lable': {
+        en: 'Lang',
+        he: 'שפה',
     },
     'sort-lable-title': {
         en: 'Title',
@@ -19,7 +23,7 @@ var gTrans = {
     },
     'btn-add': {
         en: 'Add a New Book',
-        he: 'הוסף ספר חדש',
+        he: 'הוספת ספר חדש',
     },
     'btn-confirm-add': {
         en: 'Confirm Add',
@@ -43,7 +47,7 @@ var gTrans = {
     },
     'btn-read': {
         en: 'Read',
-        he: 'עיון',
+        he: 'עיין',
     },
     'btn-update': {
         en: 'Update',
@@ -58,8 +62,8 @@ var gTrans = {
         he: 'מחק',
     },
     'footer-txt': {
-        en: 'Thank you for visiting this ugly Bookshop!',
-        he: 'תודה שביקרתם בחנות ספרים מכוערת זו!',
+        en: 'Thank you for visiting this dusty Bookshop',
+        he: 'תודה שביקרתם בחנות ספרים מאובקת זו',
     },
     'btn-close': {
         en: 'Close',
@@ -78,8 +82,8 @@ var gTrans = {
         he: 'תקציר',
     },
     'input-title': {
-        en: 'Book Title',
-        he: 'שם הספר',
+        en: 'Book Title in Eng',
+        he: 'שם הספר בעברית',
     },
     'input-price': {
         en: 'Price',
@@ -95,9 +99,9 @@ function getTrans(transKey) {
     return trans;
 }
 
-function doTrans() { 
+function doTrans() {
     var els = document.querySelectorAll('[data-trans]');
-    for (var i=0; i < els.length; i++){
+    for (var i = 0; i < els.length; i++) {
         var el = els[i]
         var transKey = el.dataset.trans;
         var trans = getTrans(transKey);
@@ -107,18 +111,16 @@ function doTrans() {
 }
 
 function setLang(lang) {
-    if (lang === 'he') document.body.classList.add('rtl');
+    gCurrLang = (lang) ? lang : (loadFromStorage('LAN')!==null) ? loadFromStorage('LAN') : 'en'
+    if (gCurrLang === 'he') document.body.classList.add('rtl');
     else document.body.classList.remove('rtl');
-    gCurrLang = lang;
+    saveToStorage('LAN', gCurrLang)
 }
 
-// function setLang(lang) {
-//     gCurrLang = loadFromStorage('LAN')
-//     if (gCurrLang === null){
-//         gCurrLang = en;    
-//     }
-//     if (gCurrLang === 'he') document.body.classList.add('rtl');
-//     else document.body.classList.remove('rtl');
-//     saveToStorage('LAN',gCurrLang)
-//     console.log('a:', lan)
-// }
+function formatCurrency(num) {
+    return new Intl.NumberFormat('he-IL', { style: 'currency', currency: 'ILS' }).format(num);
+}
+
+function onGetLang(){
+    return gCurrLang
+}

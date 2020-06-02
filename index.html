@@ -10,15 +10,24 @@
 
 <body onload="onInit()">
     <header>
-        <h1 data-trans="caption">Bookshop with no Style</h1>
+        <h1 data-trans="caption">The old Bookshop</h1>
     </header>
 
     <section class="main-container">
 
         <section class="tools">
 
+            <div class="lang-section">
+                <span data-trans="lang-lable">Lang</span>:
+                <select class="set-lang" onchange="onSetLang(this.value)">
+                    <option value=""></option>
+                    <option value="en">English</option>
+                    <option value="he">עברית</option>
+                </select>
+            </div>
+
             <span data-trans="sort-lable">Sort</span>:
-            <select onchange="onSetSort(this.value)">
+            <select class="set-sort" onchange="onSetSort(this.value)">
                 <option value="unset"></option>
                 <option data-trans="sort-lable-title" value="name">Title</option>
                 <option data-trans="sort-lable-price" value="price">Price</option>
@@ -26,57 +35,52 @@
 
             <button data-trans="btn-add" class="add-book" onclick="onAddBook()">Add a New Book</button>
 
-            <select onchange="onSetLang(this.value)">
-                <option value="en">English</option>
-                <option value="he">עברית</option>
-            </select>
 
             <div class="add-inputs" hidden>
-                <input data-trans="input-title" placeholder="Book Title">
-                <input data-trans="input-price" type="number" placeholder="Price">
+                <input class="add-input-title" data-trans="input-title" placeholder="Book Title">
+                <input class="add-input-price" data-trans="input-price" type="number" placeholder="Price">
             </div>
 
         </section>
 
         <section class="content">
 
-            <table class="books-list">
-                <thead>
-                    <tr>
-                        <td data-trans="col-id">Id</td>
-                        <td data-trans="col-title">Title</td>
-                        <td data-trans="col-price">Price</td>
-                        <td data-trans="col-actions">Actions</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Books List -->
-                </tbody>
+            <section class="table-container">
 
-            </table>
+                <table class="books-list">
+                    <thead>
+                        <tr>
+                            <td data-trans="col-id">Id</td>
+                            <td data-trans="col-title">Title</td>
+                            <td data-trans="col-price">Price</td>
+                            <td data-trans="col-actions">Actions</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Books List -->
+                    </tbody>
+                </table>
+                
+            </section>
 
-            <div class="paginator">
-                <button class="prev-page" onclick="onPrevPage()"><</button>
-                <span class="curr-page"></span>
-                <button class="next-page" onclick="onNextPage()">></button>
+            <div class="page-btns">
+                <button class="prev-page" onclick="onPrevPage()">
+                    < </button>
+                        <span class="curr-page"></span>
+                        <button class="next-page" onclick="onNextPage()">></button>
             </div>
 
             <div class="book-modal" hidden>
                 <!-- Modal -->
             </div>
 
+            <h5 class="footer-txt"data-trans="footer-txt">
+                Thank you for visiting this dusty Bookshop
+            </h5>
+
         </section>
 
-
-
     </section>
-
-
-    <footer>
-        <h5 data-trans="footer-txt">
-            Thank you for visiting this ugly Bookshop!
-        </h5>
-    </footer>
 
     <script src="js/util-service.js"></script>
     <script src="js/lang-service.js"></script>
