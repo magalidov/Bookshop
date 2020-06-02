@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Idov's Bookshop</title>
+</head>
+
+<body onload="onInit()">
+    <header>
+        <h1 data-trans="caption">Bookshop with no Style</h1>
+    </header>
+
+    <section class="main-container">
+
+        <section class="tools">
+
+            <span data-trans="sort-lable">Sort</span>:
+            <select onchange="onSetSort(this.value)">
+                <option value="unset"></option>
+                <option data-trans="sort-lable-title" value="name">Title</option>
+                <option data-trans="sort-lable-price" value="price">Price</option>
+            </select>
+
+            <button data-trans="btn-add" class="add-book" onclick="onAddBook()">Add a New Book</button>
+
+            <select onchange="onSetLang(this.value)">
+                <option value="en">English</option>
+                <option value="he">עברית</option>
+            </select>
+
+            <div class="add-inputs" hidden>
+                <input data-trans="input-title" placeholder="Book Title">
+                <input data-trans="input-price" type="number" placeholder="Price">
+            </div>
+
+        </section>
+
+        <section class="content">
+
+            <table class="books-list">
+                <thead>
+                    <tr>
+                        <td data-trans="col-id">Id</td>
+                        <td data-trans="col-title">Title</td>
+                        <td data-trans="col-price">Price</td>
+                        <td data-trans="col-actions">Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Books List -->
+                </tbody>
+
+            </table>
+
+            <div class="paginator">
+                <button class="prev-page" onclick="onPrevPage()"><</button>
+                <span class="curr-page"></span>
+                <button class="next-page" onclick="onNextPage()">></button>
+            </div>
+
+            <div class="book-modal" hidden>
+                <!-- Modal -->
+            </div>
+
+        </section>
+
+
+
+    </section>
+
+
+    <footer>
+        <h5 data-trans="footer-txt">
+            Thank you for visiting this ugly Bookshop!
+        </h5>
+    </footer>
+
+    <script src="js/util-service.js"></script>
+    <script src="js/lang-service.js"></script>
+    <script src="js/storage-service.js"></script>
+    <script src="js/books-controller.js"></script>
+    <script src="js/books-service.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

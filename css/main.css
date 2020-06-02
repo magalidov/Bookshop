@@ -1,0 +1,43 @@
+.rtl{
+    direction: rtl;
+}
+
+.books-list{
+    border-collapse: collapse;
+    border: black solid 1px;
+}
+.books-list td{
+    border: black solid 1px;
+}
+
+.book-modal{
+    margin-top: 5px;
+    border:black solid 1px; ;
+    text-align: center;
+    padding: 5px;
+    width: 250px;
+}
+.rating-slider{
+    -webkit-appearance: none;
+    height: 5px;
+    background: #d3d3d3;
+    outline: none;
+}
+.rating-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: rgb(240, 185, 33);
+    cursor: pointer;
+}
+
+.book-modal h6,h3 {
+    margin:2px;
+}
+.book-modal img{
+    height: 150px;
+}
+.book-modal p{
+    margin: 5px;
+}
