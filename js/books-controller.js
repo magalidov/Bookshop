@@ -6,9 +6,8 @@ var gOnUpdate = false
 function onInit() {
     // localStorage.clear(); // For Easy Coding Only
     createBooks(7);
-    renderBooks();
     setLang();
-    doTrans();
+    renderBooks();
 }
 
 //Lang Control
@@ -17,15 +16,13 @@ function onSetLang(lang) {
     setSort(gSortBy);
     renderBooks();
     renderBookModal();
-    doTrans();
 }
 
 //Sort control
 function onSetSort(sortType) {
-    if (sortType === 'unset') return;
+    if (sortType==='unset') return;
     setSort(sortType)
     renderBooks();
-    doTrans();
 }
 
 //CRUD button calls
@@ -41,7 +38,7 @@ function onAddBook() {
 function onAddBookConfirm() {
     var bookName = document.querySelector('[data-trans="input-title"]');
     var bookPrice = document.querySelector('[data-trans="input-price"]');
-    if (bookName.value !== '' && bookPrice.value >= 0) {
+    if (bookName.value !== '' && bookPrice.value >= 0){
         addBook(bookName.value, bookPrice.value);
         renderBooks();
     }
@@ -62,8 +59,8 @@ function onReadClick(bookId) {
 }
 //U
 function onUpdatClick(bookId) {
-    if (gOnUpdate === true) return
-    gOnUpdate = true
+    if (gOnUpdate===true) return
+    gOnUpdate= true
     var book = getBook(bookId);
     var titleTd = document.querySelector(`[data-title="${bookId}"]`);
     var priceTd = document.querySelector(`[data-price="${bookId}"]`);
@@ -76,20 +73,18 @@ function onUpdatClick(bookId) {
     doTrans();
 }
 function onSaveUpdateClick(bookId) {
-    gOnUpdate = false
+    gOnUpdate= false
     var newName = document.querySelector('.title-update');
     var newPrice = document.querySelector('.price-update');
     if (newName.value === '' || newPrice.value < 0) return
     updateBook(bookId, newName.value, newPrice.value);
     onCloseModal();
     renderBooks();
-    doTrans();
-
 }
 function onRaitingChange(bookId, rate) {
     document.querySelector('.currRate').innerHTML = `<span data-trans="modal-rating">Rating</span>: ${rate}/10</div>`;
-    doTrans();
     updateRating(bookId, rate);
+    doTrans();
 }
 //D
 function onRemoveClick(bookId) {
@@ -117,6 +112,7 @@ function renderBooks() {
     document.querySelector('.next-page').disabled = !hasNext();
     document.querySelector('.curr-page').innerText = getCurrPage() + 1;
     document.querySelector('.prev-page').disabled = !hasPrev();
+    doTrans();
 }
 
 function renderBookModal() {
